@@ -1,0 +1,73 @@
+version: "3"
+services:
+
+  web:
+    image: nginx:latest
+    build: ./builds/web
+    container_name: client-side
+    # deploy:
+    #   replicas: 2
+    #   resources:
+    #     limits:
+    #       cpus: "0.1"
+    #       memory: 100M
+    #   restart_policy:
+    #     condition: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+    volumes:
+      - "../mounts/application/client:/usr/share/nginx/html"
+      - "../mounts/logs/client:/var/log/nginx"
+    depends_on:
+      - api
+
+  api:
+    image: php:7-apache
+    build: ./builds/api
+    container_name: server-side
+    # deploy:
+    #   replicas: 2
+    #   resources:
+    #     limits:
+    #       cpus: "0.2"
+    #       memory: 150M
+    #   restart_policy:
+    #     condition: on-failure
+    ports:
+      - "443:443"
+    networks:
+      - webnet
+    volumes:
+      - "../mounts/application/server:/var/www/html"
+      - "../mounts/logs/server:/var/log/apache2"
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:latest
+    build: ./builds/db
+    container_name: database-side
+    # deploy:
+    #   replicas: 2
+    #   resources:
+    #     limits:
+    #       cpus: "0.3"
+    #       memory: 150M
+    #   restart_policy:
+    #     condition: on-failure
+    ports:
+      - "3306:3306"
+    networks:
+      - webnet
+    volumes:
+      - "../mounts/database/data:/var/lib/mysql"
+      - "../mounts/logs/database:/var/log/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: 4iouh8vLKKJED3LKj423
+      MYSQL_USER: main_user
+      MYSQL_PASSWORD: l3ejn2OUHV8312flv
+
+networks:
+  webnet:
