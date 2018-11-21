@@ -62,7 +62,7 @@ services:
     networks:
       - webnet
     volumes:
-      - "../mounts/database/data:/var/lib/mysql"
+      #- "../mounts/database/data:/var/lib/mysql"
       - "../mounts/logs/database:/var/log/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: 4iouh8vLKKJED3LKj423
