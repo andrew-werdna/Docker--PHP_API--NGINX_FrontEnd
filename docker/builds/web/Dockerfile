@@ -3,7 +3,7 @@ FROM nginx:latest
 LABEL maintainer="andrew.brown5717@gmail.com"
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get autoclean -y && apt-get autoclean -y
-RUN apt-get install -y vim build-essential wget curl
+RUN apt-get install -y vim build-essential wget curl git zip unzip
 
 ADD ./scripts/install_nvm.sh /tmp
 ADD ./scripts/install_node.sh /tmp
