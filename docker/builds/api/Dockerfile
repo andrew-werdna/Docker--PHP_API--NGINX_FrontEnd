@@ -14,6 +14,19 @@ ADD ./php.ini /usr/local/etc/php
 
 RUN bash /tmp/install_composer.sh
 
+RUN docker-php-ext-install \
+    intl \
+    mbstring \
+    pdo \
+    pdo_mysql \
+    xsl \
+    zip \
+    xml \
+    tokenizer \
+    json \
+    soap \
+    ctype
+
 #WORKDIR /var/www/html
 
 #CMD ["apache2-foreground"]
