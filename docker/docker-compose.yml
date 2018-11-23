@@ -21,6 +21,8 @@ services:
     volumes:
       - "../mounts/application/client:/usr/share/nginx/html"
       - "../mounts/logs/client:/var/log/nginx"
+    extra_hosts:
+      - "practice-app.local:172.16.0.6"
     depends_on:
       - api
 
@@ -44,6 +46,8 @@ services:
     volumes:
       - "../mounts/application/server:/var/www/html"
       - "../mounts/logs/server:/var/log/apache2"
+    extra_hosts:
+      - "practice-api.local:172.16.0.4"
     depends_on:
       - db
 
@@ -67,6 +71,8 @@ services:
     volumes:
       #- "../mounts/database/data:/var/lib/mysql"
       - "../mounts/logs/database:/var/log/mysql"
+    extra_hosts:
+      - "practice-db.local:172.16.0.2"
     environment:
       MYSQL_ROOT_PASSWORD: 4iouh8vLKKJED3LKj423
       MYSQL_USER: main_user
