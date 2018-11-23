@@ -16,7 +16,8 @@ services:
     ports:
       - "80:80"
     networks:
-      - webnet
+      webnet:
+        ipv4_address: 172.16.0.6
     volumes:
       - "../mounts/application/client:/usr/share/nginx/html"
       - "../mounts/logs/client:/var/log/nginx"
@@ -38,7 +39,8 @@ services:
     ports:
       - "443:443"
     networks:
-      - webnet
+      webnet:
+        ipv4_address: 172.16.0.4
     volumes:
       - "../mounts/application/server:/var/www/html"
       - "../mounts/logs/server:/var/log/apache2"
@@ -60,7 +62,8 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - webnet
+      webnet:
+        ipv4_address: 172.16.0.2
     volumes:
       #- "../mounts/database/data:/var/lib/mysql"
       - "../mounts/logs/database:/var/log/mysql"
@@ -72,3 +75,6 @@ services:
 
 networks:
   webnet:
+   ipam:
+     config:
+       - subnet: 172.16.0.0/16
