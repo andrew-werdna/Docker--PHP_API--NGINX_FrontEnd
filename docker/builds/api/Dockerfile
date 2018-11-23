@@ -17,6 +17,9 @@ ADD ./php.ini /usr/local/etc/php
 
 #RUN docker-php-ext-install mbstring mcrypt pdo pdo_mysql
 
+RUN a2enmod rewrite
+RUN /etc/init.d/apache2 restart
+
 RUN bash /tmp/install_composer.sh
 
 #WORKDIR /var/www/html
