@@ -9,6 +9,9 @@ ADD ./scripts/install_composer.sh /tmp
 
 RUN touch ~/.bashrc && chmod 766 ~/.bashrc
 
+RUN git config --global user.email "andrew.brown5717@gmail.com"
+RUN git config --global user.name "Andrew Brown"
+
 ADD ./apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 ADD ./php.ini /usr/local/etc/php
 

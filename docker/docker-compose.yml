@@ -13,8 +13,9 @@ services:
     #       memory: 100M
     #   restart_policy:
     #     condition: on-failure
-    ports:
-      - "80:80"
+    #ports:
+      #- "443:443"
+      #- "80:80"
     networks:
       webnet:
         ipv4_address: 172.16.0.6
@@ -38,8 +39,8 @@ services:
     #       memory: 150M
     #   restart_policy:
     #     condition: on-failure
-    ports:
-      - "443:443"
+    #ports:
+      #- "443:443"
     networks:
       webnet:
         ipv4_address: 172.16.0.4
