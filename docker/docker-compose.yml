@@ -68,6 +68,7 @@ services:
       MYSQL_ROOT_PASSWORD: 4iouh8vLKKJED3LKj423
       MYSQL_USER: main_user
       MYSQL_PASSWORD: l3ejn2OUHV8312flv
+      MYSQL_DATABASE: app_api
 
 networks:
   webnet:
