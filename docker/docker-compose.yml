@@ -45,7 +45,7 @@ services:
       webnet:
         ipv4_address: 172.16.0.4
     volumes:
-      - "../mounts/application/server:/var/www/html"
+      - "../mounts/application/server:/var/www"
       - "../mounts/logs/server:/var/log/apache2"
     extra_hosts:
       - "practice-api.local:172.16.0.4"
